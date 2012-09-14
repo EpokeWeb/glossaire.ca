@@ -16,8 +16,13 @@ class GlossariesController < ApplicationController
   # GET /glossaries/1
   # GET /glossaries/1.json
   def show
-    # @glossary = Glossary.find(params[:id])
+    # @glossary = Glossary.find(_params[:id])
     @glossary = Glossary.find_by_name(request.subdomains.first)
+    @words = @glossary.all_words
+
+    #if params[:l]
+    #  @words = @words.find_all { |w| w.name.[0] == params[:l] }
+    #end
 
     respond_to do |format|
       format.html # show.html.erb

@@ -6,3 +6,11 @@
     <strong><%= @glossary.updated_at.strftime('%Y-%m-%d %H:%M') %></strong>.
   </p>
 </div>
+
+<div style="text-align: center">
+  <%= link_to '~',  @glossary.url %>
+  <% ('A'..'Z').to_a.each do |letter| %>
+    <a href="<%= @glossary.url + '?l=' + letter%>"><%= letter %></a>
+  <% end %>
+</div>
+<hr />
