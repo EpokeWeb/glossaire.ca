@@ -1,0 +1,13 @@
+<%= render 'glossaries/desc' %>
+
+<p>
+  <b>Terme:</b>
+  <%= @word.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @word.description %>
+</p>
+
+<p><%= link_to 'Retour', :back %></p>

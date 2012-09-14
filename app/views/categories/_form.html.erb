@@ -1,0 +1,20 @@
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> ont empêchés cette catégorie d'être enregistrée:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name, :placeholder => "Entrez le nom de la catégorie" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'button' %> ou <%= link_to 'Annuler', words_path %>
+  </div>
+<% end %>

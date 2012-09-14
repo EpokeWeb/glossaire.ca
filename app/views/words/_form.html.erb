@@ -1,0 +1,30 @@
+<%= form_for(@word) do |f| %>
+  <% if @word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@word.errors.count, "error") %> ont empêchés ce terme d'être enregistré:</h2>
+
+      <ul>
+      <% @word.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="six columns">
+        <%= f.text_field :name, :placeholder => 'Entrez le terme ici' %>
+    </div>
+    <div class="one column" style="padding-top: 4px">Catégorie</div>
+    <div class="five columns">
+      <%= f.collection_select :category_id, Category.where(:user_id => @current_user), :id, :name, :include_blank => 'Sans catégorie' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 10 %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'button' %> ou <%= link_to 'Annuler', words_path %>
+  </div>
+<% end %>

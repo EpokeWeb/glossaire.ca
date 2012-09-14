@@ -1,0 +1,5 @@
+<h2>Modification du terme</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Détruire ce terme (irréversible)', @word, method: :delete, data: { confirm: 'Voulez-vous continuer?' }, :class => 'small alert button' %>

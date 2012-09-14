@@ -1,0 +1,5 @@
+<h2>Modification du glossaire</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Détruire ce glossaire (irréversible)', @glossary, method: :delete, data: { confirm: 'Voulez-vous continuer?' }, :class => "small alert button" %>

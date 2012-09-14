@@ -1,0 +1,49 @@
+<br />
+<%= form_for(@glossary) do |f| %>
+  <% if @glossary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@glossary.errors.count, "error") %> ont empêchés le glossaire d'être enregistré:</h2>
+
+      <ul>
+      <% @glossary.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row collapse">
+    <div class="two columns">
+      <%= f.text_field :name, :placeholder => "sous-domaine" %>
+    </div>
+    <div class="five columns end" style="padding-top: 10px">.glossaire.ca</div>
+  </div>
+
+  <% unless @glossary.id.nil? %>
+    <br />
+    <div class="row">
+      <div class="six columns">
+        <h4>Catégorie entière :</h4>
+        <ul>
+          <% @categories.each do |category| %>
+            <li><%= check_box_tag 'glossary[category_ids][]', category.id, @glossary.categories.include?(category)  %> <%= category.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="six columns">
+        <h4>Terme spécifique :</h4>
+        <ul style="height: 200px; max-width: 200px; position: relative;overflow: scroll">
+          <% @words.each do |word| %>
+            <li><%= check_box_tag 'glossary[word_ids][]', word.id, @glossary.words.include?(word)  %> <%= word.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <br /> <br /> 
+
+  <div class="actions">
+    <%= f.submit :class => "button" %> ou <%= link_to 'Annuler', glossaries_path %>
+  </div>
+<% end %>

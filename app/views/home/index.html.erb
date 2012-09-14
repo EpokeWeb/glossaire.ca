@@ -1,0 +1,26 @@
+<h1>Bienvenue!</h1>
+<p>Créer vos glossaires en ligne avec <strong>Glossaire.ca</strong>. C'est <strong>gratuit</strong>!</p>
+
+<div class="row">
+  <div class="four columns">
+    <h3>Termes</h3>
+    <p>Gérer vos termes en ajoutant leur nom ainsi que leur définition.</p>
+  </div>
+  <div class="four columns">
+    <h3>Catégories</h3>
+    <p>Les catégories vous permettent de mieux gérer vos termes.</p>
+  </div>
+  <div class="four columns">
+    <h3>Glossaire</h3>
+    <p>Choisissez votre sous-domaine et ajoutez-y vos termes. Chaque terme dans votre glossaire possédera une adresse unique.</p>
+    <p>Exemple<br /><%= link_to "http://demo." + Rails.application.config.host + "/lorem", "http://demo." + Rails.application.config.host + "/lorem"%></p>
+  </div>
+</div>
+
+<br />
+
+<div style="text-align: center">
+  <%= link_to "Créer un compte", new_user_registration_path, :class => 'large success radius button' %> 
+</div>
+
+

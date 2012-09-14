@@ -1,0 +1,26 @@
+<dl class="tabs four-up">
+  <dd><%= link_to 'Termes', words_path %></dd>
+  <dd class="active"><a href="#">Glossaires</a></dd>
+</dl>
+
+<table style="width: 100%">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Termes</th>
+      <th>URL</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <% @glossaries.each do |glossary| %>
+    <tr>
+      <td><%= glossary.name %></td>
+      <td><%= glossary.all_words.count %></td>
+      <td><%= link_to glossary.url, glossary.url, :target => :blank %></td>
+      <td><%= link_to 'Modifier', edit_glossary_path(glossary), :class => 'small button' %></td>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nouveau glossaire', new_glossary_path, :class => "button" %>

@@ -1,0 +1,8 @@
+<div class="panel radius">
+  <h2><%= link_to @glossary.name.humanize, @glossary.url %></h2>
+  <p>
+    Ce glossaire détient <strong><%= @glossary.all_words.count %></strong> mot<%= 's' if @glossary.all_words.count > 1 %>.
+    Il a été créé le <strong><%= @glossary.created_at.strftime('%Y-%m-%d %H:%M') %></strong> et mis à jour le 
+    <strong><%= @glossary.updated_at.strftime('%Y-%m-%d %H:%M') %></strong>.
+  </p>
+</div>

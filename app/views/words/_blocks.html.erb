@@ -1,0 +1,27 @@
+<% cols = 4 %>
+
+<% words.each_with_index do |word, index| %>
+  <% if index % cols == 0 %>
+    <div class="row">
+  <% end %>
+
+  <div class="three columns <%= 'end' if index % cols == cols - 1 || index == words.count - 1 %>">
+    <% if can? :update, word %>
+      <a href="<%= edit_word_url word %>">
+      <% end %>
+
+      <div class="panel">
+        <h4><%= word.name %></h4>
+        <p><%= truncate word.description %></p>
+      </div>
+
+      <% if can? :update, word %>
+      </a>
+    <% end %>
+  </div>
+
+  <% if index % cols == cols - 1 || index == words.count - 1 %>
+    </div>
+  <% end %>
+<% end %>
+

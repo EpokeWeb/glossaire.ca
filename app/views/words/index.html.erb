@@ -1,0 +1,40 @@
+<dl class="tabs four-up">
+  <dd class="active"><a href="#">Termes</a></dd>
+  <dd><%= link_to 'Glossaires', glossaries_path%></dd>
+</dl>
+
+<div style="text-align: right">
+  <%= link_to 'Nouveau terme', new_word_path, :class => "button" %>
+  <%= link_to 'Nouvelle catégorie', new_category_path, :class => "secondary button" %>
+</div>
+
+<% unless @words.empty? %>
+  <div class="row">
+    <div class="eleven columns end">
+      <h4>Aucune catégorie</h4>
+    </div>
+    <hr />
+  </div>
+  <%= @words.collect{|w| link_to w.name, edit_word_path(w)}.join(', ').html_safe %>
+<%end %>
+
+<% @categories.each do |category|%>
+  <div class="row">
+    <div class="ten columns">
+      <h4>
+        <%= category.name %>
+      </h4>
+    </div>
+    <div class="two columns" style="padding-top:23px;text-align:right"><%= link_to 'Modifier la catégorie', edit_category_path(category), :class => '' %></div>
+    <hr />
+  </div>
+  <%= category.words.collect{|w| link_to w.name, edit_word_path(w)}.join(', ').html_safe %>
+<% end %>
+
+<% if @categories.count >= 2 %>
+<br />
+<div style="text-align: right">
+  <%= link_to 'Nouveau terme', new_word_path, :class => "button" %>
+  <%= link_to 'Nouvelle catégorie', new_category_path, :class => "secondary button" %>
+</div>
+<% end %>

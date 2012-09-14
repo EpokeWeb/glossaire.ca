@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	
+	<!-- Uncomment to make IE8 render like IE7 -->
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+	
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title><%= content_for?(:title) ? yield(:title) : "Glossaire.ca" %></title>
+
+  <link href='http://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
+  
+	<!-- Included CSS Files -->
+	<%= stylesheet_link_tag    "application" %>
+	
+	<!-- Included JS Files  -->
+	<%= javascript_include_tag "application" %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="row">
+    <div class="four columns">
+      <h1 style="font-family: 'Oregano', cursive;"><%= link_to 'Glossaire.ca', 'http://' + Rails.application.config.host  %></h1>
+    </div>
+    <div class="eight columns" style="padding-top: 30px; text-align: right">
+      <% if user_signed_in? %>
+        Connecté en tant que <%= link_to current_user.email, edit_user_registration_path %> &nbsp;&nbsp;
+        <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete, :class => "small secondary button" %>
+      <% else %>
+        <%= link_to "S'inscrire", new_user_registration_path %> ou <%= link_to "se connecter", new_user_session_path %>
+      <% end %>
+    </div>
+  </div>
+
+  <br /> <br />
+  <% if flash[:notice] %>
+    <div class="row notice"><div class="twelve columns alert-box"><%= flash[:notice] %></div></div>
+  <% end %>
+
+  <div class="row">
+    <div class="twelve columns">
+    <%= yield %>
+    </div>
+  </div>
+  
+  <div style="text-align: center; padding: 50px; font-size: 90%;">
+    &copy; 2012 Glossaire.ca - Créer par <a href="http://niclupien.com">Nicolas Lupien</a>
+  </div>
+
+</body>
+</html>
