@@ -23,6 +23,6 @@ class Glossary < ActiveRecord::Base
     self.categories.each do |category|
       words += category.words
     end
-    words.flatten.uniq.sort
+    words.flatten.uniq.sort_by { |w| w.name }
   end
 end
