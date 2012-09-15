@@ -1,8 +1,8 @@
 == Glossaire.ca
 
-Glossaire.ca allows user to manage their terms and words definitions online and create glossaries to share in their own material.
+Glossaire.ca allows users to manage their terms and words definitions online and create glossaries to share in their own material.
 
-Each glossaries have it's own subdomain and each words have their unique and friendly id (ex: http://demo.glossaire.ca/lorem).
+Each glossaries have it's own subdomain and each words have their unique and friendly ids (ex: http://demo.glossaire.ca/lorem).
 
 This application is done with Rails 3.2 and you can see it in action at http://www.glossaire.ca.
 
@@ -14,3 +14,15 @@ This application is done with Rails 3.2 and you can see it in action at http://w
   rails server
 
 Because each glossary has it's own subdomain, you should use lvh.me instead of localhost but the application take care of that for you if you follow the links provided for each glossaries.
+
+== Questions and/or bugs ?
+
+Use the Github issue system.
+
+== Roadmap
+
+This application is kind of finished for my needs. I'll correct bugs when we'll find them. If you need something more, please raise an issue on github.
+
+== Credits
+
+(c) 2012 Glossaire.ca - Nicolas Lupien
